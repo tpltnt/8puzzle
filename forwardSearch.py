@@ -95,6 +95,12 @@ def forwardSearch(initialstate, goalstate):
     to the given goal state. It returns the path found.
     """
 
+    if not isinstance(initialstate,State):
+        raise TypeError("first argument is not of type 'State'")
+
+    if not isinstance(goalstate,State):
+        raise TypeError("second argument is not of type 'State'")
+
     if initialstate == goalstate:
         return []
     currentstate = initialstate
