@@ -10,17 +10,17 @@ class State(object):
 
     __internalstate = []
 
-    def __init__(self,state=[]):
+    def __init__(self,state_as_list=[]):
         """Allow creation of empty states or with valid values
 
         Constructor tests only for valid length, nothing more.
         """
-        if len(state) == 0:
-            self.__internalstate = state
+        if len(state_as_list) == 0:
+            self.__internalstate = state_as_list
         else:
-            if len(state) != 9:
+            if len(state_as_list) != 9:
                 raise TypeError("given state of from length")
-            self.__internalstate = state
+            self.__internalstate = state_as_list
 
     # equality operator for states
     def __eq__(self, other):
@@ -74,6 +74,8 @@ def forwardSearch(initialstate, goalstate):
     to the given goal state. It returns the path found.
     """
 
+    if initialstate == goalstate:
+        return []
     currentstate = initialstate
     plan = []
 
