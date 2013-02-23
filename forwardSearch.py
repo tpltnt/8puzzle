@@ -22,6 +22,17 @@ class State(object):
                 raise TypeError("given state of from length")
             self.__internalstate = state
 
+    # equality operator for states
+    def __eq__(self, other):
+        if isinstance(other, self.__class__):
+            return self._State__internalstate == other._State__internalstate
+        else:
+            return False
+
+    # in-equality operator
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def isEmpty(self):
         """Test if internal state is emtpy."""
         if [] == self.__internalstate:
@@ -32,7 +43,6 @@ class State(object):
     def getInternalState(self):
         """Return internal array of the State"""
         return self.__internalstate
-
 
 def moveLeft(state):
     """move empty tile to the left, return new state"""
@@ -48,7 +58,14 @@ def moveUp(state):
 
 def moveDown(state):
     """move empty tile down, return new state"""
-    return state
+    emptytileindex = state.getInternalState().index(0)
+    swapindex = emptytileindex + 3
+    if swapindex > 8:
+        raise RuntimeError("current position does not allow moving down")
+    swapstate = state.getInternalState()
+    swapstate[emptytileindex] = swapstate[swapindex]
+    swapstate[swapindex] = 0
+    return State(swapstate)
 
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
