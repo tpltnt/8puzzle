@@ -28,8 +28,16 @@ def test_forwardSearch_both_type_wrong():
     with pytest.raises(TypeError):
         forwardSearch(23,42)
 
-def test_getApplicableActions_center():
+def test_getApplicableActions_0():
+    expected = {0: moveRight, 1: moveDown}
+    topleft = State([0,1,2,3,4,5,6,7,8])
+    found = topleft.getApplicableActions()
+    assert 2 == len(found)
+    assert expected == found
+
+def test_getApplicableActions_5():
     expected = {0: moveUp, 1: moveRight, 2: moveDown, 3: moveLeft}
     centercenter = State([1,2,3,4,0,5,6,7,8])
     found = centercenter.getApplicableActions()
+    assert 4 == len(found)
     assert expected == found
