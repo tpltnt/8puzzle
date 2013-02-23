@@ -16,6 +16,11 @@ def test_moveLeft_impossible():
     with pytest.raises(RuntimeError):
         moveLeft(centerleft)
 
+def test_moveLeft_0():
+    topleft = State([0,1,2,3,4,5,6,7,8])
+    with pytest.raises(RuntimeError):
+        moveLeft(topleft)
+
 def test_moveRight():
     centercenter = State([1,2,3,4,0,5,6,7,8])
     centerright = State([1,2,3,4,5,0,6,7,8])
