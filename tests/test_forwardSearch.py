@@ -15,3 +15,15 @@ def test_forwardSearch_correct_call():
 def test_forwardSearch_same_state():
     centerbottom = State([1,2,3,4,7,5,6,0,8])
     assert [] == forwardSearch(centerbottom,centerbottom)
+
+def test_forwardSearch_first_type_wrong():
+    with pytest.raises(TypeError):
+        forwardSearch(23,State())
+
+def test_forwardSearch_second_type_wrong():
+    with pytest.raises(TypeError):
+        forwardSearch(State(),23)
+
+def test_forwardSearch_both_type_wrong():
+    with pytest.raises(TypeError):
+        forwardSearch(23,42)
