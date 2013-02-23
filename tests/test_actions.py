@@ -11,10 +11,20 @@ def test_moveLeft():
     centerleft = State([1,2,3,0,4,5,6,7,8])
     assert centerleft == moveLeft(centercenter)
 
+def test_moveLeft_impossible():
+    centerleft = State([1,2,3,0,4,5,6,7,8])
+    with pytest.raises(RuntimeError):
+        moveLeft(centerleft)
+
 def test_moveRight():
     centercenter = State([1,2,3,4,0,5,6,7,8])
     centerright = State([1,2,3,4,5,0,6,7,8])
     assert centerright == moveRight(centercenter)
+
+def test_moveRight_impossible():
+    centerright = State([1,2,3,4,5,0,6,7,8])
+    with pytest.raises(RuntimeError):
+        moveRight(centerright)
 
 def test_moveUp():
     centercenter = State([1,2,3,4,0,5,6,7,8])
