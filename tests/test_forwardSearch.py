@@ -10,7 +10,7 @@ def test_forwardSearch_correct_call():
     foo = State([1,2,3,4,7,5,6,0,8])
     bar = State([1,2,3,4,7,5,6,8,0])
     # returned plan should be just a moveLeft
-    forwardSearch(foo,bar)
+#    forwardSearch(foo,bar)
 
 def test_forwardSearch_same_state():
     centerbottom = State([1,2,3,4,7,5,6,0,8])
@@ -27,3 +27,9 @@ def test_forwardSearch_second_type_wrong():
 def test_forwardSearch_both_type_wrong():
     with pytest.raises(TypeError):
         forwardSearch(23,42)
+
+def test_getApplicableActions_center():
+    expected = {0: moveUp, 1: moveRight, 2: moveDown, 3: moveLeft}
+    centercenter = State([1,2,3,4,0,5,6,7,8])
+    found = centercenter.getApplicableActions()
+    assert expected == found
