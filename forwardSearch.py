@@ -14,10 +14,10 @@ class State(object):
         pass
         
     def isEmpty(self):
-        if [] == __state:
-            return true
+        if [] == self.__state:
+            return True
         else:
-            return false
+            return False
 
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
