@@ -5,7 +5,7 @@ class State(object):
 
     0 encodes the empty tile. Currently only a 3x3 board
     is supported. A state is empty by default and has to
-    be populated.
+    be populated.y
     """
 
     __state = []
@@ -13,7 +13,7 @@ class State(object):
     def __init__(self):
         pass
         
-    def isEmpty():
+    def isEmpty(self):
         if [] == __state:
             return true
         else:
