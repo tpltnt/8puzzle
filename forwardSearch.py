@@ -33,6 +33,23 @@ class State(object):
         """Return internal array of the State"""
         return self.__internalstate
 
+
+def moveLeft(state):
+    """move empty tile to the left, return new state"""
+    return state
+
+def moveRight(state):
+    """move empty tile to the right, return new state"""
+    return state
+
+def moveUp(state):
+    """move empty tile up, return new state"""
+    return state
+
+def moveDown(state):
+    """move empty tile down, return new state"""
+    return state
+
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
 
