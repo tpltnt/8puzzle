@@ -21,6 +21,11 @@ def test_moveUp():
     centertop = State([1,0,3,4,2,5,6,7,8])
     assert centertop == moveUp(centercenter)
 
+def test_moveUp_impossible():
+    centertop = State([1,0,3,4,2,5,6,7,8])
+    with pytest.raises(RuntimeError):
+        moveUp(centertop)
+
 def test_moveDown():
     centercenter = State([1,2,3,4,0,5,6,7,8])
     centerbottom = State([1,2,3,4,7,5,6,0,8])
