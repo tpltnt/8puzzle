@@ -46,11 +46,25 @@ class State(object):
 
 def moveLeft(state):
     """move empty tile to the left, return new state"""
-    return state
+    emptytileindex = state.getInternalState().index(0)
+    swapindex = emptytileindex - 1
+    if swapindex in (-1,2,5):
+        raise RuntimeError("current position does not allow moving to the right")
+    swapstate = state.getInternalState()
+    swapstate[emptytileindex] = swapstate[swapindex]
+    swapstate[swapindex] = 0
+    return State(swapstate)
 
 def moveRight(state):
     """move empty tile to the right, return new state"""
-    return state
+    emptytileindex = state.getInternalState().index(0)
+    swapindex = emptytileindex + 1
+    if swapindex in (3,6,9):
+        raise RuntimeError("current position does not allow moving to the right")
+    swapstate = state.getInternalState()
+    swapstate[emptytileindex] = swapstate[swapindex]
+    swapstate[swapindex] = 0
+    return State(swapstate)
 
 def moveUp(state):
     """move empty tile up, return new state"""
