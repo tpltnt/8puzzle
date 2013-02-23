@@ -4,11 +4,20 @@ class State(object):
     """This class models the state of the puzlleboard.
 
     0 encodes the empty tile. Currently only a 3x3 board
-    is supported
+    is supported. A state is empty by default and has to
+    be populated.
     """
+
+    __state = []
+
     def __init__(self):
         pass
         
+    def isEmpty():
+        if [] == __state:
+            return true
+        else:
+            return false
 
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
