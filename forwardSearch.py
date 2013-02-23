@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
 
+class State(object):
+    """This class models the state of the puzlleboard.
+
+    0 encodes the empty tile. Currently only a 3x3 board
+    is supported
+    """
+    def __init__(self):
+        pass
+        
+
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
 
