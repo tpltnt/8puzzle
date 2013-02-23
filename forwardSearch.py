@@ -8,13 +8,18 @@ class State(object):
     be populated.y
     """
 
-    __state = []
+    __internalstate = []
 
-    def __init__(self,state = []):
-        self.__state = state
-        
+    def __init__(self,state=[]):
+        if len(state) == 0:
+            self.__internalstate = state
+        else:
+            if len(state) != 9:
+                raise TypeError("given state of from length")
+            self.__internalstate = state
+
     def isEmpty(self):
-        if [] == self.__state:
+        if [] == self.__internalstate:
             return True
         else:
             return False
