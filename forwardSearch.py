@@ -10,14 +10,15 @@ class State(object):
 
     __state = []
 
-    def __init__(self):
-        pass
+    def __init__(self,state = []):
+        self.__state = state
         
     def isEmpty(self):
         if [] == self.__state:
             return True
         else:
             return False
+
 
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
