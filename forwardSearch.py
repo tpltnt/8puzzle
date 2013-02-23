@@ -101,11 +101,12 @@ def forwardSearch(initialstate, goalstate):
     if not isinstance(goalstate,State):
         raise TypeError("second argument is not of type 'State'")
 
-    if initialstate == goalstate:
-        return []
     currentstate = initialstate
     plan = []
 
+    while True:
+        if currentstate == goalstate:
+            return plan
 
 # only call if script is executed (and not included)
 if __name__ == '__main__':
