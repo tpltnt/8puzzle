@@ -47,29 +47,31 @@ class State(object):
     def getApplicableActions(self):
         """Return set of applicable functions"""
         applicables = {}
+
         try:
             moveUp(self)
+            applicables.update({len(applicables.keys()): moveUp})
         except RuntimeError:
             pass
-        applicables.update({len(applicables.keys()): moveUp})
 
         try:
             moveRight(self)
+            applicables.update({len(applicables.keys()): moveRight})
         except RuntimeError:
             pass
-        applicables.update({len(applicables.keys()): moveRight})
 
         try:
             moveDown(self)
+            applicables.update({len(applicables.keys()): moveDown})
         except RuntimeError:
             pass
-        applicables.update({len(applicables.keys()): moveDown})
 
         try:
             moveLeft(self)
+            applicables.update({len(applicables.keys()): moveLeft})
         except RuntimeError:
             pass
-        applicables.update({len(applicables.keys()): moveLeft})
+
         return applicables    
 
 
@@ -143,4 +145,5 @@ def forwardSearch(initialstate, goalstate):
 if __name__ == '__main__':
     goalstate = State([0, 1, 2, 3, 4, 5, 6, 7, 8])
     initalstate = State([1, 6, 4, 8, 7, 0, 3, 2, 5])
+    print(goalstate.getApplicableActions())
 #    forwardSearch(initalstate,goalstate)
