@@ -11,6 +11,10 @@ class State(object):
     __internalstate = []
 
     def __init__(self,state=[]):
+        """Allow creation of empty states or with valid values
+
+        Constructor tests only for valid length, nothing more.
+        """
         if len(state) == 0:
             self.__internalstate = state
         else:
@@ -19,11 +23,15 @@ class State(object):
             self.__internalstate = state
 
     def isEmpty(self):
+        """Test if internal state is emtpy."""
         if [] == self.__internalstate:
             return True
         else:
             return False
 
+    def getInternalState(self):
+        """Return internal array of the State"""
+        return self.__internalstate
 
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
