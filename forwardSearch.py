@@ -136,6 +136,23 @@ def moveDown(state):
     swapstate[swapindex] = 0
     return State(swapstate)
 
+def getTaxicab(start,end):
+    """Calculate the Taxicab metric on a 3x3 board.
+
+    The board is represented as an array starting
+    with indexes in the top left.
+    """
+    pass
+
+def eval(currentstate,goalstate):
+    """"Evaluate the current state with respect to the goal state.
+
+    This function encodes problem-specific knowledge and should
+    be adapted as needed. Here the Manhattan/Taxicab-metric[0] is used.
+    [0] http://mathworld.wolfram.com/TaxicabMetric.html
+    """
+    pass
+    
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
 
