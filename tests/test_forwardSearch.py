@@ -45,11 +45,11 @@ def test_getApplicableActions_5():
 def test_getTaxicabMetric_0():
     assert 0 == getTaxicabMetric(0,0)
 
-def test_getTaxicabMetric_09():
-    assert 4 == getTaxicabMetric(0,9)
+def test_getTaxicabMetric_08():
+    assert 4 == getTaxicabMetric(0,8)
 
-def test_getTaxicabMetric_49():
-    assert 2 == getTaxicabMetric(4,9)
+def test_getTaxicabMetric_48():
+    assert 2 == getTaxicabMetric(4,8)
 
 def test_getTaxicabMetric_45():
     assert 1 == getTaxicabMetric(4,5)
@@ -62,3 +62,27 @@ def test_getTaxicabMetric_74():
 
 def test_getTaxicabMetric_54():
     assert 1 == getTaxicabMetric(5,4)
+
+def test_getTaxicabMetric_09():
+    with pytest.raises(ValueError):
+        getTaxicabMetric(0,9)
+
+def test_getTaxicabMetric_0_1():
+    with pytest.raises(ValueError):
+        getTaxicabMetric(0,-1)
+
+def test_getTaxicabMetric_90():
+    with pytest.raises(ValueError):
+        getTaxicabMetric(9,0)
+
+def test_getTaxicabMetric__10():
+    with pytest.raises(ValueError):
+        getTaxicabMetric(-1,0)
+
+def test_getTaxicabMetric_99():
+    with pytest.raises(ValueError):
+        getTaxicabMetric(9,9)
+
+def test_getTaxicabMetric__1_1():
+    with pytest.raises(ValueError):
+        getTaxicabMetric(-1,-1)
