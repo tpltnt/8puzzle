@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import random
+
 class State(object):
     """This class models the state of the puzlleboard.
 
@@ -45,7 +47,13 @@ class State(object):
         return self.__internalstate
 
     def getApplicableActions(self):
-        """Return set of applicable functions"""
+        """Return set of applicable functions
+
+        You can easily execute the actions by iterating
+        over the indexes (without actual knowledge of
+        the particular action).
+        e.g. action[1](teststate) applies the 2nd action to the given state
+        """
         applicables = {}
 
         try:
@@ -142,16 +150,23 @@ def forwardSearch(initialstate, goalstate):
         raise TypeError("second argument is not of type 'State'")
 
     currentstate = initialstate
-    plan = []
+    plan = {}
+    random.seed()
 
     while True:
         if currentstate == goalstate:
             return plan
-
+        applicable = currentstate.getApplicableActions()
+        options = len(applicable)
+        if options == 0:
+            raise RuntimeError("no applicable actions found")
+        act = random.randint(0, options-1)
+        plan.update({len(plan.keys()): appicable[act]})
+        currentstate = applicable[act](currentstate)
 
 # only call if script is executed (and not included)
 if __name__ == '__main__':
     goalstate = State([0, 1, 2, 3, 4, 5, 6, 7, 8])
-    initalstate = State([1, 6, 4, 8, 7, 0, 3, 2, 5])
-    print(goalstate.getApplicableActions())
-#    forwardSearch(initalstate,goalstate)
+    initialstate = State([1, 0, 2, 3, 4, 5, 6, 7, 8])
+    #initialstate = State([1, 6, 4, 8, 7, 0, 3, 2, 5])
+    forwardSearch(initialstate,goalstate)
