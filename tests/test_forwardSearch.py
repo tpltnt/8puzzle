@@ -110,4 +110,40 @@ def test_eval_8():
 def test_heuristic_random():
     state = State([0,1,2,3,4,5,6,7,8])
     appl = {0: moveRight, 1: moveDown}
-    assert heuristic_random(state,appl) in (0,1)
+    assert heuristic_random(state,appl,state) in (0,1)
+
+def test_heuristic_random_ass():
+    state = State([0,1,2,3,4,5,6,7,8])
+    appl = {0: moveRight, 1: moveDown}
+    with pytest.raises(TypeError):
+        heuristic_random(appl,state,state)
+
+def test_heuristic_random_aas():
+    state = State([0,1,2,3,4,5,6,7,8])
+    appl = {0: moveRight, 1: moveDown}
+    with pytest.raises(TypeError):
+        heuristic_random(appl,appl,state)
+
+def test_heuristic_random_aaa():
+    state = State([0,1,2,3,4,5,6,7,8])
+    appl = {0: moveRight, 1: moveDown}
+    with pytest.raises(TypeError):
+        heuristic_random(appl,appl,appl)
+
+def test_heuristic_random_saa():
+    state = State([0,1,2,3,4,5,6,7,8])
+    appl = {0: moveRight, 1: moveDown}
+    with pytest.raises(TypeError):
+        heuristic_random(state,appl,appl)
+
+def test_heuristic_random_ssa():
+    state = State([0,1,2,3,4,5,6,7,8])
+    appl = {0: moveRight, 1: moveDown}
+    with pytest.raises(TypeError):
+        heuristic_random(state,state,appl)
+
+def test_heuristic_random_sss():
+    state = State([0,1,2,3,4,5,6,7,8])
+    appl = {0: moveRight, 1: moveDown}
+    with pytest.raises(TypeError):
+        heuristic_random(state,state,state)
