@@ -181,6 +181,9 @@ def eval(currentstate,goalstate):
     be adapted as needed. Here the Manhattan/Taxicab-metric[0] is used.
     [0] http://mathworld.wolfram.com/TaxicabMetric.html
     """
+    #
+    # b0rked
+    #
     cstate = currentstate.getInternalState()
     gstate = goalstate.getInternalState()
     value = 0
