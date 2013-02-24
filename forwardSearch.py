@@ -82,7 +82,9 @@ def moveLeft(state):
     swapindex = emptytileindex - 1
     if swapindex in (-1,2,5):
         raise RuntimeError("current position does not allow moving to the right")
-    swapstate = state.getInternalState()
+    swapstate = []
+    for val in state.getInternalState():
+        swapstate.append(val)
     swapstate[emptytileindex] = swapstate[swapindex]
     swapstate[swapindex] = 0
     return State(swapstate)
@@ -93,7 +95,9 @@ def moveRight(state):
     swapindex = emptytileindex + 1
     if swapindex in (3,6,9):
         raise RuntimeError("current position does not allow moving to the right")
-    swapstate = state.getInternalState()
+    swapstate = []
+    for val in state.getInternalState():
+        swapstate.append(val)
     swapstate[emptytileindex] = swapstate[swapindex]
     swapstate[swapindex] = 0
     return State(swapstate)
@@ -104,7 +108,9 @@ def moveUp(state):
     swapindex = emptytileindex - 3
     if swapindex < 0:
         raise RuntimeError("current position does not allow moving up")
-    swapstate = state.getInternalState()
+    swapstate = []
+    for val in state.getInternalState():
+        swapstate.append(val)
     swapstate[emptytileindex] = swapstate[swapindex]
     swapstate[swapindex] = 0
     return State(swapstate)
@@ -115,7 +121,9 @@ def moveDown(state):
     swapindex = emptytileindex + 3
     if swapindex > 8:
         raise RuntimeError("current position does not allow moving down")
-    swapstate = state.getInternalState()
+    swapstate = []
+    for val in state.getInternalState():
+        swapstate.append(val)
     swapstate[emptytileindex] = swapstate[swapindex]
     swapstate[swapindex] = 0
     return State(swapstate)
