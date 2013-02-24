@@ -212,6 +212,7 @@ def forwardSearch(initialstate, goalstate):
         options = len(applicable)
         if options == 0:
             raise RuntimeError("no applicable actions found")
+        # choose action randomly -> really bad performance, potentially infinite path
         act = random.randint(0, options-1)
         currentstate = applicable[act](currentstate)
         plan.update({len(plan.keys()): applicable[act]})
