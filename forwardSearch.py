@@ -161,8 +161,9 @@ def forwardSearch(initialstate, goalstate):
         if options == 0:
             raise RuntimeError("no applicable actions found")
         act = random.randint(0, options-1)
-        plan.update({len(plan.keys()): appicable[act]})
         currentstate = applicable[act](currentstate)
+        plan.update({len(plan.keys()): applicable[act]})
+        return plan
 
 # only call if script is executed (and not included)
 if __name__ == '__main__':
