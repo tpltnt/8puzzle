@@ -147,3 +147,9 @@ def test_heuristic_random_sss():
     appl = {0: moveRight, 1: moveDown}
     with pytest.raises(TypeError):
         heuristic_random(state,state,state)
+
+def test_heuritic_bestfirst():
+    start = State([1,0,2,3,4,5,6,7,8])
+    goal = State([0,1,2,3,4,5,6,7,8])
+    # start options = 0: moveRight, 1: moveDown, 2: moveLeft
+    assert 2 == heuristic_bestfirst(start,start.getApplicableActions(),goal)
