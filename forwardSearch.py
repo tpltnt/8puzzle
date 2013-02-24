@@ -190,6 +190,12 @@ def eval(currentstate,goalstate):
 
 def heuritic_bestfirst(state,applicables,goal):
     """Choose the action whose successor has the lowest distance to the goal"""
+    if not isinstance(state,State):
+        raise TypeError("no current state given")
+    if not isinstance(applicables, dict):
+        raise TypeError("applicable action not as dictionary")
+    if not isinstance(goal,State):
+        raise TypeError("no goal state given")
     pass
 
 def heuristic_random(state,applicables,goal):
