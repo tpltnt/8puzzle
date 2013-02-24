@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import random
+import math
 
 class State(object):
     """This class models the state of the puzlleboard.
@@ -136,13 +137,44 @@ def moveDown(state):
     swapstate[swapindex] = 0
     return State(swapstate)
 
-def getTaxicab(start,end):
+def getTaxicabMetric(start,end):
     """Calculate the Taxicab metric on a 3x3 board.
 
     The board is represented as an array starting
     with indexes in the top left.
     """
-    pass
+    # and now brute assignment code
+    startx
+    if start in (0,3,6):
+        startx = 0
+    if start in (1,4,7):
+        startx = 1
+    if start in (2,5,8):
+        startx = 2
+    endx
+    if end in (0,3,6):
+        endx = 0
+    if end in (1,4,7):
+        endx = 1
+    if end in (2,5,8):
+        endx = 2
+
+    starty
+    if start in (0,1,2):
+        starty = 0
+    if start in (3,4,5):
+        starty = 1
+    if start in (6,7,8):
+        starty = 2
+
+    endy
+    if end in (0,1,2):
+        endy = 0
+    if end in (3,4,5):
+        endy = 1
+    if end in (6,7,8):
+        endy = 2
+    return math.abs(startx + endx) + math.abs(starty + endy)
 
 def eval(currentstate,goalstate):
     """"Evaluate the current state with respect to the goal state.
