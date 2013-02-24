@@ -171,6 +171,7 @@ def getTaxicabMetric(start,end):
         endy = 1
     if end in (6,7,8):
         endy = 2
+    
     return abs(startx - endx) + abs(starty - endy)
 
 def eval(currentstate,goalstate):
@@ -180,7 +181,12 @@ def eval(currentstate,goalstate):
     be adapted as needed. Here the Manhattan/Taxicab-metric[0] is used.
     [0] http://mathworld.wolfram.com/TaxicabMetric.html
     """
-    pass
+    cstate = currentstate.getInternalState()
+    gstate = goalstate.getInternalState()
+    value = 0
+    for i in range(0,9):
+        value += getTaxicabMetric(cstate[i],gstate[i])
+    return value
     
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
