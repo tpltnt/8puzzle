@@ -86,3 +86,23 @@ def test_getTaxicabMetric_99():
 def test_getTaxicabMetric__1_1():
     with pytest.raises(ValueError):
         getTaxicabMetric(-1,-1)
+
+def test_eval_0():
+    foo = State([0,1,2,3,4,5,6,7,8])
+    assert 0 == eval(foo,foo)
+
+# both tiles are out of place with same distance
+def test_eval_2():
+    foo = State([0,1,2,3,4,5,6,7,8])
+    bar = State([1,0,2,3,4,5,6,7,8])
+    assert 2 == eval(foo,bar)
+
+def test_eval_4():
+    foo = State([0,1,2,3,4,5,6,7,8])
+    bar = State([4,1,2,3,0,5,6,7,8])
+    assert 4 == eval(foo,bar)
+
+def test_eval_8():
+    foo = State([0,1,2,3,4,5,6,7,8])
+    bar = State([8,1,2,3,4,5,6,7,0])
+    assert 8 == eval(foo,bar)
