@@ -188,15 +188,21 @@ def eval(currentstate,goalstate):
         value += getTaxicabMetric(cstate[i],gstate[i])
     return value
 
-def heuritic_bestfirst(state,applicables):
+def heuritic_bestfirst(state,applicables,goal):
+    """Choose the action whose successor has the lowest distance to the goal"""
     pass
 
-def heuristic_random(state,applicables):
+def heuristic_random(state,applicables,goal):
     """Choose one action at random, return index (number).
 
     This heuristic results in potentially infinite paths
     and has usually the worst performace characteristics.
     """
+    if not isinstance(state,State):
+        raise TypeError("no current state given")
+    if not isinstance(goal,State):
+        raise TypeError("no goal state given")
+
     options = len(applicables)
     return random.randint(0, options-1)
 
@@ -224,7 +230,7 @@ def forwardSearch(initialstate, goalstate):
         options = len(applicable)
         if options == 0:
             raise RuntimeError("no applicable actions found")
-        act = heuristic_random(currentstate,applicable)
+        act = heuristic_random(currentstate,applicable,goalstate)
         currentstate = applicable[act](currentstate)
         plan.update({len(plan.keys()): applicable[act]})
         return plan
