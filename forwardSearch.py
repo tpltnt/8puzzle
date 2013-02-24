@@ -189,7 +189,11 @@ def eval(currentstate,goalstate):
     return value
 
 def heuristic_random(state,options):
-    """Choose one action at random, return index (number)"""
+    """Choose one action at random, return index (number)
+
+    This heuristic results in potentially infinite paths
+    and has usually the worst performace characteristics.
+    """
     return random.randint(0, options-1)
 
 def forwardSearch(initialstate, goalstate):
@@ -216,7 +220,6 @@ def forwardSearch(initialstate, goalstate):
         options = len(applicable)
         if options == 0:
             raise RuntimeError("no applicable actions found")
-        # choose action randomly -> really bad performance, potentially infinite path
         act = heuristic_random(currentstate,options)
         currentstate = applicable[act](currentstate)
         plan.update({len(plan.keys()): applicable[act]})
