@@ -206,6 +206,7 @@ def heuristic_bestfirst(state,applicables,goal):
         if currentscore < bestscore:
             bestoption = i
             bestscore = currentscore
+
     return bestoption
 
 
@@ -258,7 +259,7 @@ def forwardSearch(initialstate, goalstate):
 # only call if script is executed (and not included)
 if __name__ == '__main__':
     goalstate = State([0, 1, 2, 3, 4, 5, 6, 7, 8])
-    initialstate = State([1, 0, 2, 3, 4, 5, 6, 7, 8])
-    #initialstate = State([1, 6, 4, 8, 7, 0, 3, 2, 5])
+    #initialstate = State([1, 0, 2, 3, 4, 5, 6, 7, 8])
+    initialstate = State([1, 6, 4, 8, 7, 0, 3, 2, 5])
     plan = forwardSearch(initialstate,goalstate)
     print(plan)
