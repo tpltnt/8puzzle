@@ -41,3 +41,24 @@ def test_getApplicableActions_5():
     found = centercenter.getApplicableActions()
     assert 4 == len(found)
     assert expected == found
+
+def test_getTaxicabMetric_0():
+    assert 0 == getTaxicabMetric(0,0)
+
+def test_getTaxicabMetric_09():
+    assert 4 == getTaxicabMetric(0,9)
+
+def test_getTaxicabMetric_49():
+    assert 2 == getTaxicabMetric(4,9)
+
+def test_getTaxicabMetric_45():
+    assert 1 == getTaxicabMetric(4,5)
+
+def test_getTaxicabMetric_47():
+    assert 1 == getTaxicabMetric(4,7)
+
+def test_getTaxicabMetric_74():
+    assert 1 == getTaxicabMetric(7,4)
+
+def test_getTaxicabMetric_54():
+    assert 1 == getTaxicabMetric(5,4)
