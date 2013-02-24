@@ -188,7 +188,7 @@ def eval(currentstate,goalstate):
         value += getTaxicabMetric(cstate[i],gstate[i])
     return value
 
-def heuritic_bestfirst(state,applicables,goal):
+def heuristic_bestfirst(state,applicables,goal):
     """Choose the action whose successor has the lowest distance to the goal"""
     if not isinstance(state,State):
         raise TypeError("no current state given")
@@ -196,7 +196,18 @@ def heuritic_bestfirst(state,applicables,goal):
         raise TypeError("applicable action not as dictionary")
     if not isinstance(goal,State):
         raise TypeError("no goal state given")
-    pass
+    
+    bestoption = 0
+    bestscore = 100
+    for i in range(0,len(applicables)):
+        # apply an action & evaluate result
+        currentscore = eval(applicables[i](state),goal)
+        # best option -> lowest score
+        if currentscore < bestscore:
+            bestoption = i
+            bestscore = currentscore
+    return bestoption
+
 
 def heuristic_random(state,applicables,goal):
     """Choose one action at random, return index (number).
