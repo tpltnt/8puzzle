@@ -249,7 +249,8 @@ def forwardSearch(initialstate, goalstate):
         options = len(applicable)
         if options == 0:
             raise RuntimeError("no applicable actions found")
-        act = heuristic_random(currentstate,applicable,goalstate)
+        #act = heuristic_random(currentstate,applicable,goalstate)
+        act = heuristic_bestfirst(currentstate,applicable,goalstate)
         currentstate = applicable[act](currentstate)
         plan.update({len(plan.keys()): applicable[act]})
         return plan
@@ -259,4 +260,5 @@ if __name__ == '__main__':
     goalstate = State([0, 1, 2, 3, 4, 5, 6, 7, 8])
     initialstate = State([1, 0, 2, 3, 4, 5, 6, 7, 8])
     #initialstate = State([1, 6, 4, 8, 7, 0, 3, 2, 5])
-    forwardSearch(initialstate,goalstate)
+    plan = forwardSearch(initialstate,goalstate)
+    print(plan)
