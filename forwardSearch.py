@@ -189,7 +189,7 @@ def eval(currentstate,goalstate):
     return value
 
 def heuristic_random(state,options):
-    """Choose one action at random, return index (number)
+    """Choose one action at random, return index (number).
 
     This heuristic results in potentially infinite paths
     and has usually the worst performace characteristics.
