@@ -188,12 +188,16 @@ def eval(currentstate,goalstate):
         value += getTaxicabMetric(cstate[i],gstate[i])
     return value
 
-def heuristic_random(state,options):
+def heuritic_bestfirst(state,applicables):
+    pass
+
+def heuristic_random(state,applicables):
     """Choose one action at random, return index (number).
 
     This heuristic results in potentially infinite paths
     and has usually the worst performace characteristics.
     """
+    options = len(applicables)
     return random.randint(0, options-1)
 
 def forwardSearch(initialstate, goalstate):
@@ -220,7 +224,7 @@ def forwardSearch(initialstate, goalstate):
         options = len(applicable)
         if options == 0:
             raise RuntimeError("no applicable actions found")
-        act = heuristic_random(currentstate,options)
+        act = heuristic_random(currentstate,applicable)
         currentstate = applicable[act](currentstate)
         plan.update({len(plan.keys()): applicable[act]})
         return plan
