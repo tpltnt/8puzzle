@@ -187,7 +187,11 @@ def eval(currentstate,goalstate):
     for i in range(0,9):
         value += getTaxicabMetric(cstate[i],gstate[i])
     return value
-    
+
+def heuristic_random(state,options):
+    """Choose one action at random, return index (number)"""
+    return random.randint(0, options-1)
+
 def forwardSearch(initialstate, goalstate):
     """Implementation for forward search in state space
 
@@ -213,7 +217,7 @@ def forwardSearch(initialstate, goalstate):
         if options == 0:
             raise RuntimeError("no applicable actions found")
         # choose action randomly -> really bad performance, potentially infinite path
-        act = random.randint(0, options-1)
+        act = heuristic_random(currentstate,options)
         currentstate = applicable[act](currentstate)
         plan.update({len(plan.keys()): applicable[act]})
         return plan
