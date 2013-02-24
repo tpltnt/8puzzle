@@ -106,3 +106,6 @@ def test_eval_8():
     foo = State([0,1,2,3,4,5,6,7,8])
     bar = State([8,1,2,3,4,5,6,7,0])
     assert 8 == eval(foo,bar)
+
+def test_heuristic_random():
+    assert heuristic_random(State(),3) in (0,1,2)
